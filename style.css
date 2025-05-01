@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: white;
+  color: rgba(3,36,78,0.8);
+  margin: 0;
+  padding: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.controls {
+  width: 360px;
+  padding: 2rem;
+  background: white;
+  box-shadow: -1px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+canvas {
+  max-height: 90vh;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  border: 1px solid #ccc;
+}
+
+.range-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.range-control label {
+  white-space: nowrap;
+}
+
+.swatch-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.swatch-group p {
+  margin: 0 0 0.5rem;
+}
+.swatches {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.swatch.selected {
+  border: 2px solid rgba(3,36,78,0.8);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.button-like,
+button {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: #42B4AD;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin: 0.5rem 0;
+  text-decoration: none;
+}
+.button-like:hover,
+button:hover {
+  background-color: #369f98;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.material-icons {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .controls {
+    width: 100%;
+    box-shadow: none;
+    border-top: 1px solid #eee;
+  }
+}

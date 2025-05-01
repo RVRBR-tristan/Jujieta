@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jujieta</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="favicon.png" />
+</head>
+<body>
+  <div class="layout">
+    <div class="preview">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="controls">
+      <h1>Jujieta</h1>
+      <input type="file" id="upload" accept="image/*" />
+      <label for="upload" class="button-like">
+        <span class="material-icons">upload_file</span>
+        Choisir un fichier
+      </label>
+      <div class="range-control">
+        <label for="threshold">Force : <span id="thresholdValue">127</span></label>
+        <input type="range" id="threshold" min="0" max="255" value="127" />
+      </div>
+      <div class="swatch-line">
+        <div class="swatch-group">
+          <p>Points</p>
+          <div class="swatches" id="colorSwatches">
+            <div class="swatch" data-color="#42B4AD" style="background:#42B4AD;"></div>
+            <div class="swatch" data-color="#2768AB" style="background:#2768AB;"></div>
+            <div class="swatch" data-color="#B2E6F1" style="background:#B2E6F1;"></div>
+            <div class="swatch" data-color="#03244E" style="background:#03244E;"></div>
+          </div>
+        </div>
+        <div class="swatch-group">
+          <p>Fond</p>
+          <div class="swatches" id="bgColorSwatches">
+            <div class="swatch" data-color="#FFFFFF" style="background:#FFFFFF; border:1px solid #ccc;"></div>
+            <div class="swatch" data-color="#42B4AD" style="background:#42B4AD;"></div>
+            <div class="swatch" data-color="#2768AB" style="background:#2768AB;"></div>
+            <div class="swatch" data-color="#B2E6F1" style="background:#B2E6F1;"></div>
+            <div class="swatch" data-color="#03244E" style="background:#03244E;"></div>
+          </div>
+        </div>
+      </div>
+      <button id="download">
+        <span class="material-icons">download</span>
+        Télécharger PNG
+      </button>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
