@@ -5,6 +5,8 @@ const ctx = canvas.getContext("2d");
 const threshold = document.getElementById("threshold");
 const thresholdValue = document.getElementById("thresholdValue");
 const download = document.getElementById("download");
+const resetBtn = document.getElementById("reset");
+const dropArea = document.getElementById("drop-area");
 
 let originalImage = new Image();
 let inkColor = "#42B4AD";
@@ -36,19 +38,7 @@ function setupSwatches() {
   bgColorSwatches[0].classList.add("selected");
 }
 
-upload.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function (event) {
-    originalImage.onload = () => {
-      resizeCanvasToImage();
-      drawHalftone();
-    };
-    originalImage.src = event.target.result;
-  };
-  reader.readAsDataURL(file);
-});
+upload.addEventListener("change", (e) => handleFile(e.target.files[0]));
 
 threshold.addEventListener("input", () => {
   thresholdValue.textContent = threshold.value;
@@ -71,12 +61,57 @@ download.addEventListener("click", () => {
   link.click();
 });
 
+resetBtn.addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  originalImage = new Image();
+  threshold.value = 127;
+  thresholdValue.textContent = 127;
+  inkColor = "#42B4AD";
+  bgColor = "#FFFFFF";
+  document.querySelectorAll(".swatch").forEach(s => s.classList.remove("selected"));
+  document.querySelector("#colorSwatches .swatch").classList.add("selected");
+  document.querySelector("#bgColorSwatches .swatch").classList.add("selected");
+});
+
+// Drag & Drop
+["dragenter", "dragover"].forEach(eventName => {
+  dropArea.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    dropArea.classList.add("dragover");
+  });
+});
+
+["dragleave", "drop"].forEach(eventName => {
+  dropArea.addEventListener(eventName, () => {
+    dropArea.classList.remove("dragover");
+  });
+});
+
+dropArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    handleFile(file);
+  }
+});
+
+function handleFile(file) {
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    originalImage.onload = () => {
+      resizeCanvasToImage();
+      drawHalftone();
+    };
+    originalImage.src = event.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function resizeCanvasToImage() {
   const ratio = originalImage.width / originalImage.height;
   const maxHeight = window.innerHeight * 0.8;
   let height = maxHeight;
   let width = height * ratio;
-
   canvas.width = width;
   canvas.height = height;
 }

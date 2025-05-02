@@ -115,3 +115,9 @@ button:hover {
     border-top: 1px solid #eee;
   }
 }
+
+#drop-area.dragover {
+  outline: 2px dashed #42B4AD;
+  background-color: #e6f8f7;
+  transition: background-color 0.2s ease-in-out;
+}
