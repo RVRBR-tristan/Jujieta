@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jujieta - Ta pote pop </title>
+  <title>Jujieta</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" href="favicon.png" />
@@ -14,7 +14,13 @@
       <canvas id="canvas"></canvas>
     </div>
     <div class="controls">
-      <h1>Jujieta</h1>
+      
+<h1>Jujieta</h1>
+<button id="theme-toggle" class="theme-toggle">
+  <span class="material-icons" id="theme-icon">dark_mode</span>
+  <span id="theme-label">Mode sombre</span>
+</button>
+
       <input type="file" id="upload" accept="image/*" />
       <label for="upload" class="button-like">
         <span class="material-icons">upload_file</span>
@@ -48,10 +54,6 @@
       <button id="download">
         <span class="material-icons">download</span>
         Télécharger PNG
-      </button>
-      <button id="reset">
-        <span class="material-icons">restart_alt</span>
-        Réinitialiser
       </button>
     </div>
   </div>

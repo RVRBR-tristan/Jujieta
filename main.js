@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 const threshold = document.getElementById("threshold");
 const thresholdValue = document.getElementById("thresholdValue");
 const download = document.getElementById("download");
-const resetBtn = document.getElementById("reset");
+
 const dropArea = document.getElementById("drop-area");
 
 let originalImage = new Image();
@@ -61,17 +61,6 @@ download.addEventListener("click", () => {
   link.click();
 });
 
-resetBtn.addEventListener("click", () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  originalImage = new Image();
-  threshold.value = 127;
-  thresholdValue.textContent = 127;
-  inkColor = "#42B4AD";
-  bgColor = "#FFFFFF";
-  document.querySelectorAll(".swatch").forEach(s => s.classList.remove("selected"));
-  document.querySelector("#colorSwatches .swatch").classList.add("selected");
-  document.querySelector("#bgColorSwatches .swatch").classList.add("selected");
-});
 
 // Drag & Drop
 ["dragenter", "dragover"].forEach(eventName => {
@@ -157,3 +146,26 @@ function hexToRgb(hex) {
 }
 
 setupSwatches();
+
+
+const themeToggle = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+const themeLabel = document.getElementById("theme-label");
+
+function applyTheme(theme) {
+  document.body.classList.toggle("dark-mode", theme === "dark");
+  document.body.classList.toggle("light-mode", theme === "light");
+  themeIcon.textContent = theme === "dark" ? "light_mode" : "dark_mode";
+  themeLabel.textContent = theme === "dark" ? "Mode clair" : "Mode sombre";
+}
+
+themeToggle.addEventListener("click", () => {
+  const current = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const newTheme = current === "dark" ? "light" : "dark";
+  localStorage.setItem("theme", newTheme);
+  applyTheme(newTheme);
+});
+
+// On load
+const savedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+applyTheme(savedTheme);

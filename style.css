@@ -121,3 +121,120 @@ button:hover {
   background-color: #e6f8f7;
   transition: background-color 0.2s ease-in-out;
 }
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1c1e;
+    color: #e0f1f1;
+  }
+
+  .controls {
+    background-color: #222;
+    color: #e0f1f1;
+    box-shadow: -1px 0 4px rgba(255, 255, 255, 0.05);
+  }
+
+  .swatch.selected {
+    border-color: #e0f1f1;
+  }
+
+  .range-control label,
+  .swatch-group p {
+    color: #e0f1f1;
+  }
+
+  .button-like,
+  button {
+    background-color: #2c9ca2;
+    color: #fff;
+  }
+
+  .button-like:hover,
+  button:hover {
+    background-color: #1d7f84;
+  }
+
+  #drop-area.dragover {
+    outline: 2px dashed #2c9ca2;
+    background-color: #294042;
+  }
+
+  canvas {
+    border: 1px solid #444;
+  }
+}
+
+.theme-toggle {
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+body.light-mode {
+  background-color: white;
+  color: rgba(3,36,78,0.8);
+}
+body.light-mode .controls {
+  background-color: white;
+  color: rgba(3,36,78,0.8);
+}
+body.light-mode .swatch.selected {
+  border-color: rgba(3,36,78,0.8);
+}
+body.light-mode .range-control label,
+body.light-mode .swatch-group p {
+  color: rgba(3,36,78,0.8);
+}
+body.light-mode canvas {
+  border: 1px solid #ccc;
+}
+
+
+body.dark-mode {
+  background-color: #1a1c1e;
+  color: #e0f1f1;
+}
+body.dark-mode .controls {
+  background-color: #222;
+  color: #e0f1f1;
+  box-shadow: -1px 0 4px rgba(255, 255, 255, 0.05);
+}
+body.dark-mode .swatch.selected {
+  border-color: #e0f1f1;
+}
+body.dark-mode .range-control label,
+body.dark-mode .swatch-group p {
+  color: #e0f1f1;
+}
+body.dark-mode .button-like,
+body.dark-mode button {
+  background-color: #2c9ca2;
+  color: #fff;
+}
+body.dark-mode .button-like:hover,
+body.dark-mode button:hover {
+  background-color: #1d7f84;
+}
+body.dark-mode #drop-area.dragover {
+  outline: 2px dashed #2c9ca2;
+  background-color: #294042;
+}
+body.dark-mode canvas {
+  border: 1px solid #444;
+}
+
+
+body.dark-mode .preview {
+  background-color: #0F172A;
+}
+
+body.dark-mode .controls {
+  background-color: #1E2A3A;
+}
